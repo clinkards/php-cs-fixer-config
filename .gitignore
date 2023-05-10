@@ -1,0 +1,15 @@
+/.idea
+/.vscode
+/build
+/phpunit.xml
+/vendor
+
+.php_cs.cache
+.php-cs-fixer.cache
+.phpunit.result.cache
+
+composer.lock
+composer.phar
+
+Thumbs.db
+.DS_Store

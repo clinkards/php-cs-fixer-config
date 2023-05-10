@@ -1,0 +1,31 @@
+{
+  "name": "clinkards/php-cs-fixer-config",
+  "description": "A shared php-cs-fixer config used in our projects",
+  "keywords": ["php-cs-fixer", "config"],
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Matt Davis",
+      "email": "matt.davis@clinkard.co.uk",
+      "homepage": "https://www.charlesclinkard.co.uk"
+    }
+  ],
+  "require": {
+    "php": "^8.0|^8.1|^8.2",
+    "friendsofphp/php-cs-fixer": "^3.16"
+  },
+  "autoload": {
+    "psr-4": {
+      "Clinkards\\PhpCsFixerConfig\\": "src/"
+    }
+  },
+  "scripts": {
+    "phpcs-fix" : "vendor/bin/php-cs-fixer fix --using-cache=no --ansi",
+    "phpcs": "vendor/bin/php-cs-fixer fix --diff --dry-run  --ansi"
+  },
+  "scripts-descriptions": {
+    "phpcs": "Runs coding style test suite"
+  },
+  "minimum-stability": "dev",
+  "prefer-stable": true
+}
