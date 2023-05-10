@@ -6,8 +6,21 @@ This is a shared config for [FriendsOfPHP/PHP-CS-Fixer](https://github.com/Frien
 
 ## Installation
 
-```bash
-composer require --dev clinkards/php-cs-fixer-config
+Add the package to your composer.json as a dev dependency.
+```json
+"require-dev": {
+    "clinkards/php-cs-fixer-config": "dev-main"
+}
+```
+You will also need to add the repository to your composer.json.
+```json
+"repositories": [
+    {
+      "type": "vcs",
+      "url": "git@github.com:/clinkards/php-cs-fixer-config.git"
+    }
+],
+
 ```
 
 ## Usage
