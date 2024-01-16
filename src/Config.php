@@ -10,8 +10,9 @@ class Config extends BaseConfig
         '@PSR12' => true,
         '@Symfony' => true,
         'array_syntax' => ['syntax' => 'short'],
-        'ordered_imports' => ['sort_algorithm' => 'length'],
+        'ordered_imports' => ['sort_algorithm' => 'alpha'],
         'no_unused_imports' => true,
+        'declare_strict_types' => true,
     ];
 
     public function __construct(private array $extraRules = [])
