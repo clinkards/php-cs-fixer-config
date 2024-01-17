@@ -13,6 +13,7 @@ class Config extends BaseConfig
         'ordered_imports' => ['sort_algorithm' => 'alpha'],
         'no_unused_imports' => true,
         'declare_strict_types' => true,
+        'fully_qualified_strict_types' => false,
     ];
 
     public function __construct(private array $extraRules = [])
