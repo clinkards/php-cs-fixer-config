@@ -26,6 +26,6 @@
   "scripts-descriptions": {
     "phpcs": "Runs coding style test suite"
   },
-  "minimum-stability": "dev",
+  "minimum-stability": "stable",
   "prefer-stable": true
 }
