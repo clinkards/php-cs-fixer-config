@@ -14,14 +14,18 @@
     "php": "^8.0|^8.1|^8.2",
     "friendsofphp/php-cs-fixer": "^3.16"
   },
+  "require-dev": {
+    "phpunit/phpunit": "^11.1"
+  },
   "autoload": {
     "psr-4": {
       "Clinkards\\PhpCsFixerConfig\\": "src/"
     }
   },
   "scripts": {
-    "phpcs-fix" : "vendor/bin/php-cs-fixer fix --using-cache=no --ansi",
-    "phpcs": "vendor/bin/php-cs-fixer fix --diff --dry-run  --ansi"
+    "phpcs-fix" : "vendor/bin/php-cs-fixer fix --allow-risky=yes --using-cache=no --ansi",
+    "phpcs": "vendor/bin/php-cs-fixer fix --diff --dry-run --allow-risky=yes --ansi",
+    "test": "phpunit"
   },
   "scripts-descriptions": {
     "phpcs": "Runs coding style test suite"
