@@ -2,6 +2,7 @@
 
 namespace Clinkards\PhpCsFixerConfig;
 
+use Gordinskiy\LineLengthChecker\Rules\LineLengthLimit;
 use PhpCsFixer\Config as BaseConfig;
 
 class Config extends BaseConfig
@@ -14,6 +15,7 @@ class Config extends BaseConfig
         'no_unused_imports' => true,
         'declare_strict_types' => true,
         'fully_qualified_strict_types' => false,
+        'Gordinskiy/line_length_limit' => true,
     ];
 
     public function __construct(private array $extraRules = [])
@@ -24,5 +26,10 @@ class Config extends BaseConfig
     public function getRules(): array
     {
         return array_merge($this->defaultRules, $this->extraRules);
+    }
+
+    public function getCustomFixers(): array
+    {
+        return [new LineLengthLimit()];
     }
 }
