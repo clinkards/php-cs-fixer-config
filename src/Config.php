@@ -1,7 +1,10 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Clinkards\PhpCsFixerConfig;
 
+use Clinkards\PhpCsFixerConfig\Sniffs\RemoveReadonlyPropertyAttributeOnReadonlyClass;
 use PhpCsFixer\Config as BaseConfig;
 
 class Config extends BaseConfig
@@ -14,11 +17,16 @@ class Config extends BaseConfig
         'no_unused_imports' => true,
         'declare_strict_types' => true,
         'fully_qualified_strict_types' => false,
+        'Clinkards/remove_readonly_property' => true,
     ];
 
     public function __construct(private array $extraRules = [])
     {
         parent::__construct('Clinkards - Coding Standard');
+
+        $this->registerCustomFixers([
+            new RemoveReadonlyPropertyAttributeOnReadonlyClass(),
+        ]);
     }
 
     public function getRules(): array
