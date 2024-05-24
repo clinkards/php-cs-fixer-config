@@ -1,0 +1,17 @@
+name: CD - Notify Registry
+
+on:
+  release:
+    types: [created]
+
+jobs:
+  package:
+    timeout-minutes: 6
+    runs-on: ubuntu-latest
+    steps:
+    - name: Repository Dispatch
+      uses: peter-evans/repository-dispatch@v3
+      with:
+        token: ${{ secrets.RELEASE_TOKEN }}
+        repository: clinkards/php-composer-registry
+        event-type: package_release
