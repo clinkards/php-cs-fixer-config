@@ -25,10 +25,6 @@ class Config extends BaseConfig
     public function __construct(private array $extraRules = [])
     {
         parent::__construct('Clinkards - Coding Standard');
-
-        $this->registerCustomFixers([
-            new RemoveReadonlyPropertyAttributeOnReadonlyClass(),
-        ]);
     }
 
     public function getRules(): array
@@ -38,6 +34,9 @@ class Config extends BaseConfig
 
     public function getCustomFixers(): array
     {
-        return [new LineLengthLimit()];
+        return [
+            new LineLengthLimit(),
+            new RemoveReadonlyPropertyAttributeOnReadonlyClass(),
+        ];
     }
 }
