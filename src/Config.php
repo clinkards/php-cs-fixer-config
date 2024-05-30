@@ -25,18 +25,15 @@ class Config extends BaseConfig
     public function __construct(private array $extraRules = [])
     {
         parent::__construct('Clinkards - Coding Standard');
+
+        $this->registerCustomFixers([
+            new RemoveReadonlyPropertyAttributeOnReadonlyClass(),
+            new LineLengthLimit(),
+        ]);
     }
 
     public function getRules(): array
     {
         return array_merge($this->defaultRules, $this->extraRules);
-    }
-
-    public function getCustomFixers(): array
-    {
-        return [
-            new LineLengthLimit(),
-            new RemoveReadonlyPropertyAttributeOnReadonlyClass(),
-        ];
     }
 }
