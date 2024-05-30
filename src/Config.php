@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace Clinkards\PhpCsFixerConfig;
 
-use Gordinskiy\LineLengthChecker\Rules\LineLengthLimit;
 use Clinkards\PhpCsFixerConfig\Sniffs\RemoveReadonlyPropertyAttributeOnReadonlyClass;
+use Gordinskiy\LineLengthChecker\Rules\LineLengthLimit;
 use PhpCsFixer\Config as BaseConfig;
 
 class Config extends BaseConfig
@@ -28,16 +28,12 @@ class Config extends BaseConfig
 
         $this->registerCustomFixers([
             new RemoveReadonlyPropertyAttributeOnReadonlyClass(),
+            new LineLengthLimit(),
         ]);
     }
 
     public function getRules(): array
     {
         return array_merge($this->defaultRules, $this->extraRules);
-    }
-
-    public function getCustomFixers(): array
-    {
-        return [new LineLengthLimit()];
     }
 }
