@@ -20,6 +20,7 @@ class Config extends BaseConfig
         'fully_qualified_strict_types' => false,
         'Gordinskiy/line_length_limit' => true,
         'Clinkards/remove_readonly_property' => true,
+        'single_line_throw' => false,
     ];
 
     public function __construct(private array $extraRules = [])
