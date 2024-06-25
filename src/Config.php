@@ -18,7 +18,6 @@ class Config extends BaseConfig
         'no_unused_imports' => true,
         'declare_strict_types' => true,
         'fully_qualified_strict_types' => false,
-        'Gordinskiy/line_length_limit' => true,
         'Clinkards/remove_readonly_property' => true,
         'single_line_throw' => false,
     ];
@@ -29,7 +28,6 @@ class Config extends BaseConfig
 
         $this->registerCustomFixers([
             new RemoveReadonlyPropertyAttributeOnReadonlyClass(),
-            new LineLengthLimit(),
         ]);
     }
 
