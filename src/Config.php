@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace Clinkards\PhpCsFixerConfig;
 
 use Clinkards\PhpCsFixerConfig\Sniffs\RemoveReadonlyPropertyAttributeOnReadonlyClass;
-use Gordinskiy\LineLengthChecker\Rules\LineLengthLimit;
 use PhpCsFixer\Config as BaseConfig;
 
 class Config extends BaseConfig
