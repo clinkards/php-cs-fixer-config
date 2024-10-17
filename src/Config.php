@@ -19,6 +19,7 @@ class Config extends BaseConfig
         'declare_strict_types' => true,
         'fully_qualified_strict_types' => false,
         'Clinkards/remove_readonly_property' => true,
+        'Clinkards/remove_final_from_models' => true,
         'single_line_throw' => false,
     ];
 
