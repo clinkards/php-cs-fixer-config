@@ -7,7 +7,6 @@ namespace Clinkards\PhpCsFixerConfig\Sniffs;
 use PhpCsFixer\AbstractFixer;
 use PhpCsFixer\FixerDefinition\CodeSample;
 use PhpCsFixer\FixerDefinition\FixerDefinition;
-use PhpCsFixer\Tokenizer\Token;
 use PhpCsFixer\Tokenizer\Tokens;
 
 final class RemoveReadonlyPropertyAttributeOnReadonlyClass extends AbstractFixer
