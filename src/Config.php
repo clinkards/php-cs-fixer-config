@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Clinkards\PhpCsFixerConfig;
 
+use Clinkards\PhpCsFixerConfig\Sniffs\RemoveFinalFromModels;
 use Clinkards\PhpCsFixerConfig\Sniffs\RemoveReadonlyPropertyAttributeOnReadonlyClass;
 use PhpCsFixer\Config as BaseConfig;
 
@@ -27,6 +28,7 @@ class Config extends BaseConfig
 
         $this->registerCustomFixers([
             new RemoveReadonlyPropertyAttributeOnReadonlyClass(),
+            new RemoveFinalFromModels(),
         ]);
     }
 
