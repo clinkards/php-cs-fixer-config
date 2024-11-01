@@ -30,11 +30,28 @@ final class RemoveFinalFromModels extends AbstractFixer
                 $namespace = $this->getNamespace($tokens, $index);
 
                 // Check if the namespace contains \Domain\Model
-                if (preg_match('/\\\\Domain\\\\Model/', $namespace)) {
+                if ($this->appliesToNamespace($namespace)) {
                     $this->removeFinalFromClass($tokens);
                 }
             }
         }
+    }
+
+    private function appliesToNamespace(string $namespace): bool
+    {
+        if (!preg_match('/\\\\Domain\\\\Model/', $namespace)) {
+            return false;
+        }
+
+        if (preg_match('/\\\\Domain\\\\Model\\\\Event?/', $namespace)) {
+            return false;
+        }
+
+        if (preg_match('/\\\\Test?/', $namespace)) {
+            return false;
+        }
+
+        return true;
     }
 
     private function getNamespace(Tokens $tokens, int $index): string

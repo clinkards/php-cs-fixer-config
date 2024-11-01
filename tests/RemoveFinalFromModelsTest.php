@@ -23,16 +23,25 @@ final class RemoveFinalFromModelsTest extends TestCase
         $this->assertSame($expected, $tokens->generateCode());
     }
 
-    public function testDoesNotRemoveFinalFromOtherNamespaces()
+    /**
+     * @dataProvider invalidProvider
+     */
+    public function testDoesNotRemoveFinalFromOtherNamespaces(string $class)
     {
         $fixer = new RemoveFinalFromModels();
         
-        $expected = '<?php namespace Some\Random\Domain\Service; final class Foo { public int $bar; }';
-        $input = '<?php namespace Some\Random\Domain\Service; final class Foo { public int $bar; }';
-        
-        $tokens = Tokens::fromCode($input);
+        $tokens = Tokens::fromCode($class);
         $fixer->fix(new \SplFileInfo(__FILE__), $tokens);
 
-        $this->assertSame($expected, $tokens->generateCode());
+        $this->assertSame($class, $tokens->generateCode());
+    }
+
+    public static function invalidProvider(): \Generator
+    {
+        yield 'Generic Namespace' => ['<?php namespace Some\Random; final class Foo { public int $bar; }'];
+        yield 'Event Namespace' => ['<?php namespace Stride\Service\Domain\Model\Event; final class Foo { public int $bar; }'];
+        yield 'Events Namespace' => ['<?php namespace Stride\Service\Domain\Model\Events; final class Foo { public int $bar; }'];
+        yield 'Test Namespace' => ['<?php namespace Stride\Test\Service\Domain\Model; final class Foo { public int $bar; }'];
+        yield 'Tests Namespace' => ['<?php namespace Stride\Tests\Service\Domain\Model; final class Foo { public int $bar; }'];
     }
 }
