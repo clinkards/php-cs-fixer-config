@@ -21,6 +21,7 @@ class Config extends BaseConfig
         'Clinkards/remove_readonly_property' => true,
         'Clinkards/remove_final_from_models' => true,
         'single_line_throw' => false,
+        'phpdoc_to_comment' => false,
     ];
 
     public function __construct(private array $extraRules = [])
