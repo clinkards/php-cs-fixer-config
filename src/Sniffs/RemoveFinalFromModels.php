@@ -20,7 +20,13 @@ final class RemoveFinalFromModels extends AbstractFixer
 
     public function isCandidate(Tokens $tokens): bool
     {
-        return $tokens->isTokenKindFound(T_FINAL);
+        foreach ($tokens as $index => $token) {
+            if ($token->isGivenKind(T_FINAL) && $tokens[$tokens->getNextMeaningfulToken($index)]->isGivenKind(T_CLASS)) {
+                return true;
+            }
+        }
+    
+        return false;
     }
 
     public function applyFix(\SplFileInfo $file, Tokens $tokens): void
