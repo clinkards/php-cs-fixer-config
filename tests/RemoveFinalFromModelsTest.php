@@ -44,4 +44,16 @@ final class RemoveFinalFromModelsTest extends TestCase
         yield 'Test Namespace' => ['<?php namespace Stride\Test\Service\Domain\Model; final class Foo { public int $bar; }'];
         yield 'Tests Namespace' => ['<?php namespace Stride\Tests\Service\Domain\Model; final class Foo { public int $bar; }'];
     }
+
+    public function testDoesNotRemoveFinalFromMethods(): void
+    {
+        $fixer = new RemoveFinalFromModels();
+        
+        $classString = '<?php namespace Some\Random\Domain\Model; class Foo { final public function doSomething() { return $bar; } }';
+        
+        $tokens = Tokens::fromCode($classString);
+        $fixer->fix(new \SplFileInfo(__FILE__), $tokens);
+
+        $this->assertSame($classString, $tokens->generateCode());
+    }
 }
