@@ -25,7 +25,7 @@ final class RemoveFinalFromModels extends AbstractFixer
                 return true;
             }
         }
-    
+
         return false;
     }
 
